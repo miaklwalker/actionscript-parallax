@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./style.css">
+    <title>Parallaxer Documentation</title>
+</head>
+<body>
+<h2 id="actionscript-parallaxer">Actionscript Parallaxer</h2>
+<h3 id="kick-back-and-let-the-code-do-it-for-ya">Kick back and let the code do it for ya!</h3>
+<p>Alright lets get a couple things straight bucko, This isn&#39;t just some tool,this baby is gonna change things.</p>
+<p>Let&#39;s start with the obvious you are going to need to put the code in your project.
+    Now this part is important</p>
+    <p>Your are going to need the  <a href="" download="./parallax.as">file</a> which you can get here as a .as file</p>
+    <p>You can also get it as a .txt <a href="" download="./parallax.txt">file</a></p>
+<ol>
+    <li>Create a new layer in your project call it <code>CODE</code> or something and press <code>F6</code> to create a new Keyframe.</li>
+    <li>Click that layer and press <code>F9</code> This is gonna bring up the actions code panel.</li>
+    <li>Paste in the parallax code, Easy part done.</li>
+    <li>Now if you want the preview to run right this part is important, Create another keyframe exactly ** one ** frame after the last frame of your animation</li>
+    <li>Click that frame and press <code>F9</code> Now all you need to do it type <code>cleanup()</code> or copy/paste it from here.</li>
+    <li>Now the fun part! If you are using vcam click on the first frame of your animation</li>
+    <li>Move all of the background elements where you want them.</li>
+    <li>Click each one and to go to the properties panel and give them a name.</li>
+    <li>Now make a note of the name we will need it later</li>
+    <li>Go back to the first frame of <code>CODE</code> and go to the very bottom,you are about to do some coding</li>
+    <li>Now choke back all your pre-conceived notions this coding session is going to be more painless than you think</li>
+    <li>You are going to type the following <strong>EXACTLY</strong> <code>updateLayer([layerName],[zAxis],[manualXoffset],[manualYoffset],[layerScale])</code>
+        Replacing <code>[someWord]</code>. like this: <code>updateLayer(&quot;sky&quot;,1000,0,0,true)</code> now lets go over what they do.<ul>
+            <li>layerName - Rememeber when I said remember the name ? This is your chance to show you can follow basic directions pick one of your layerNames and put it here</li>
+            <li>zAxis - This is a number that represents how <em>far</em> your layer is from the camera. This number can be whatever you want but I&#39;ll explain some ideal ranges below<ul>
+                <li>[more than 15, less than 75] I&#39;d call the foreground, This is <strong>really</strong> close to the camera</li>
+                <li>[more than 75, less than 500] You are going to see <strong>much</strong> less movement at this distance, but still some</li>
+                <li>[more than 500,less than 1001] This is what I&#39;d call the background layer, This is so far your are basically going to see no movement</li>
+            </ul>
+            </li>
+            <li>manualXOffset - <em>optional</em> - Can&#39;t drag your element to the <strong>PERFECT</strong> spot ? I got your back this how you fix it! positive number move it to the right and negative numbers move it to the left</li>
+            <li>manualYOffset - <em>optional</em> - The same as the above expect, positive is <strong>DOWN</strong> and negative is <strong>UP</strong></li>
+            <li>layerScale - <em>optional</em> - This is set to either <code>true</code> or <code>false</code>, and this controls whether the layer grows as the camera zooms</li>
+        </ul>
+    </li>
+    <li>So if you are still reading the minimum we need is something like this <code>updateLayer(&quot;sky&quot;,1000)</code></li>
+    <li>Do this for every layer you want updated with parallax.</li>
+</ol>
+<p>Congrats !! You now have some working parallax! Lets talk a few more details for finer control
+    There are two more options you can control:
+    scaleToCamera
+    offsetToCamera</p>
+<p><code>scaleToCamera</code> : Is a global kill switch for the Scaling on zoom if you don&#39;t want it in your project use this <code>config.scaleToCamera = false</code>
+    <code>offsetToCamera</code> : is the global switch to choose where set the origin for the project, by default we use the Vcam but we can also choose to use the canvas by pasting <code>config.scaleToCamera = false</code>;</p>
+<p>Either of these can be pasted right above where you type <code>updateLayer(...)</code></p>
+<p>I&#39;ll end with an example.
+    I have 4 layers I want to parallax I&#39;ll call them [&quot;sky&quot;,&quot;mountain&quot;,&quot;mountainTwo&quot;,&quot;mountainThree&quot;]
+    and lets say <strong>DON&#39;T</strong> want scaling that would look like</p>
+<pre><code class="language-javascript">    config.scaleToCamera = false;
+    updateLayer(&quot;sky&quot;,1000);
+    updateLayer(&quot;mountain&quot;,50);
+    updateLayer(&quot;mountainTwo&quot;,90);
+    updateLayer(&quot;mountainThree&quot;,180);
+</code></pre>
+<p>Now get back to the fun part ! animating your fight !</p>
+<h2 id="if-you-used-this-project-drop-me-some-credit-in-your-project">If you used this project drop me some credit in your project!</h2>
+<p>###<strong>Parallax Script - Michael Walker</strong></p>
+<p>or something like that</p>
+<h3 id="thanks-for-reading-and-enjoy">Thanks for reading and enjoy!</h3>
+
+<h2> Projects Using Parallaxer </h2>
+<ul>
+    <li>YOURS</li>
+</ul>
+
+</body>
+</html>
